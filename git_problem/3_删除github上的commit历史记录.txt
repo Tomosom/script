@@ -1,0 +1,23 @@
+# 克隆你的远程仓库
+git clone git@github.com:victorfengming/victorfengming.github.io.git
+
+# 进入你的本地库
+cd victorfengming.github.io
+
+# 新建并切换到一个分支
+git checkout –-orphan latest_branch
+
+# 选中全部文件
+git add -A
+
+# 提交
+git commit -am “Reinitialize”
+
+# 删除原分支
+git branch -D master
+
+# 将本分支改为原分支名
+git branch -m master
+
+# 推送到远程分支
+git push -f origin master
