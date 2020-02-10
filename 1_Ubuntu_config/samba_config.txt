@@ -1,0 +1,27 @@
+/etc/samba/smb.conf
+
+[book]
+  path = /home/book
+  valid users = book
+  available = yes
+  public = yes
+  writable = yes
+  map archive = no
+
+
+
+通过Samba服务器实现windows和Linux之间的文件共享，相信是绝大多数人的选择。通常我们都会使用Samba的缺省配置，这样，每次通过Samba从Windows向Linux中拷贝文件时，文件都会被加上”可执行”的属性。或者修改文件的时候，文件会被加上“可执行”属性。这是很让人头疼的问题，每次都要通过chmod去修改文件的权限很是麻烦。
+
+今天仔细看了一下Samba的手册，发现只要把/etc/samba/smb.conf中这几行取消注释就可以解决这个问题了。
+
+
+map archive = no
+map hidden = no
+map read only = no
+map system = no
+store dos attributes = yes
+
+取消注释，重启samba服务器就ok了。。。
+————————————————
+版权声明：本文为CSDN博主「hustfoxy」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/hustfoxy/article/details/9194713

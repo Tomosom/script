@@ -1,0 +1,18 @@
+
+hello.out : func.o main.o
+	gcc -o hello.out func.o main.o
+	
+func.o : func.c
+	gcc -o func.o -c func.c
+	
+main.o : main.c
+	gcc -o main.o -c main.c
+
+
+clean : FORCE
+	rm *.o hello.out
+
+# FORCE 目标总是认为是最新的
+# 有无FORCE文件对上面的 clean目标无影响
+FORCE :	
+#	echo "tom"

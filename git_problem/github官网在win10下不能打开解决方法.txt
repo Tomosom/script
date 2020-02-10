@@ -1,0 +1,29 @@
+github官网在win10下不能打开解决方法
+原创飞龙YF 最后发布于2018-08-05 19:47:21 阅读数 3155  收藏
+展开
+今天学习Redis需要下载对应的Windows 64下的安装包，可是官网有找不到，又不少网友提供的Github的下载链接，可是我的电脑不能正常打开GitHub网站，郁闷。。。，然后有开始研究怎么打开这个网站。不多说了，开始正文：
+
+1.Chrome浏览器打开GitHub官网，按下F12，然后F5刷新，在Network标签下查看不能正常正常加载的资源的网址 
+
+    GitHub官网：https://github.com/
+
+    不能正常展示的资源如：https://assets-cdn.github.com/assets/frameworks-01356238c65ce56a395237b592b58668.css 
+
+2.通过IP查询网站查询对应域名的IP地址
+
+    查询IP 的网站：https://www.ipaddress.com/
+
+    输入域名assets-cdn.github.com查询到对应的IP地址为151.101.184.133
+
+3.修改本地电脑的hosts文件
+
+    Notepad++打开文件C:\Windows\System32\drivers\etc\hosts在末尾追加如下行：
+
+    151.101.184.133 assets-cdn.github.com
+
+    保存hosts文件，重新打开GitHub官网，正常展示了。
+
+    若保存hosts文件提示没有权限时，可以选择使用管理员身份打开。
+————————————————
+版权声明：本文为CSDN博主「飞龙YF」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/yangfan8805/article/details/81433689

@@ -1,0 +1,13 @@
+
+.PHONY : test1 test2
+
+Tom := jiaquantao
+DriverSoftware := kernelDriver
+	
+test1 :
+	@echo "$(MAKE_VERSION)"
+	@echo "$(CURDIR)"
+	@echo "$(.VARIABLES)"
+	
+test2 :
+	@echo "$(RM)"

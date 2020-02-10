@@ -1,0 +1,10 @@
+1. win10上安装完git工具后,新建文件夹或者删除文件夹不自动刷新的问题
+	修改注册表（亲测有效）:
+	Win+R，调出运行窗口；
+	输入 regedit，回车，打开注册表编辑器；
+	点击 HKEY_LOCAL_MACHINE—SYSTEM—CurrentControlSet—Control—Update，
+	点击 Update 编辑 UpdateMode 的值为0（16进制）；
+	如果没有 Update，则在 Control下新建—项，命名为 Update。
+	在 Update 点击右键新建—DWORD（32位）重命名为 UpdateMode，把值修改为0；
+	关闭注册表，重启系统。
+	【UpdateMode 是设置是否自动刷新窗口显示，其值为1表示否，为0表示是。】

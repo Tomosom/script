@@ -1,0 +1,11 @@
+# PWD是系统环境变量,不加export也会传到下一个makefile中
+PWD := pwd
+export var := Tao.Software
+new := Tom
+
+test :
+	@echo "PWD => $(PWD)"
+	@echo "make another file ..."
+	@$(MAKE) -f makefile.2
+	@$(MAKE) -f makefile.2 new:=$(new)
+	

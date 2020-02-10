@@ -1,0 +1,2 @@
+查找预定义变量 $(.VARIABLES) 中的某一项
+www.gnu.org/software/make/manual/make.html

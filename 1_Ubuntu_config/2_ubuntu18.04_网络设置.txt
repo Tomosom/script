@@ -1,0 +1,42 @@
+ip设置：
+~$ cat /etc/network/interfaces
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+auto ens33
+iface ens33 inet static
+address 192.168.43.180
+netmask 255.255.255.0
+gateway 192.168.43.1
+
+
+dns设置：
+~$ cat /etc/systemd/resolved.conf
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+#
+# Entries in this file show the compile time defaults.
+# You can change settings by editing this file.
+# Defaults can be restored by simply deleting this file.
+#
+# See resolved.conf(5) for details
+
+[Resolve]
+DNS=8.8.8.8 223.5.5.5
+#FallbackDNS=
+#Domains=
+#LLMNR=no
+#MulticastDNS=no
+#DNSSEC=no
+#Cache=yes
+#DNSStubListener=yes
+
+
+
+手机路由ping不通网关问题：
+编辑->虚拟网络编辑器->桥接模式 ---->选择正确的网络适配器 (比如用的usb无线网卡：802.11n USB Wireless LAN Card #2)
