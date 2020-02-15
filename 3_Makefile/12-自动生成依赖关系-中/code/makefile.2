@@ -1,5 +1,5 @@
 
-.PHONY : all
+.PHONY : all all_error
 
 all :
 	set -e; \
@@ -7,4 +7,8 @@ all :
 	cd test; \
 	mkdir subtest
 	
+all_error :
+	mkdir test
+	cd test
+	mkdir subtest
 	
