@@ -4,7 +4,9 @@
 
 all : 
 	@echo "$@ : $^"
-	
+
+# touch b.txt c.txt test.txt 进行测试
+# 规则拆分
 test.txt : b.txt
 	@echo "creating $@ ..."
 	@echo "all : c.txt" > test.txt

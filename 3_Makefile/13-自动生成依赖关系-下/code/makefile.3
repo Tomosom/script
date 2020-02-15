@@ -4,7 +4,10 @@
 
 all : 
 	@echo "this is all"
-	
+
+# 分析原因
+# make all 时打印 this is all
+# make 时打印 this is other
 test.txt :
 	@echo "creating $@ ..."
 	@echo "other : ; @echo "this is other" " > test.txt

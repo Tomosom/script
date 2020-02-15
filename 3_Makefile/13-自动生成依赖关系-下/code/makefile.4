@@ -4,7 +4,8 @@
 
 all : 
 	@echo "this is all"
-	
+
+# 执行make, 当前目录均存在test.txt 和 b.txt时, 若 b.txt 时间戳更新, 则此规则还是会执行
 test.txt : b.txt
 	@echo "creating $@ ..."
 	
