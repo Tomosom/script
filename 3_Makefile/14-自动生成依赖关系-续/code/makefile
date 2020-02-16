@@ -41,6 +41,8 @@ $(DIR_OBJS)/%.o : %.c
 $(DIRS) :
 	$(MKDIR) $@
 
+# 利用了include 的暗黑操作三, dep文件也依赖.c 和 .h 文件
+# 解决问题,当再次创建一个依赖的头文件时,编译也能识别到改动
 ifeq ("$(wildcard $(DIR_DEPS))", "")
 $(DIR_DEPS)/%.dep : $(DIR_DEPS) %.c
 else
