@@ -22,7 +22,9 @@ ifeq ($(DEBUG),true)
 CFLAGS += -g
 endif
 
+# 获取相对路径的绝对路径
 MODULE := $(realpath .)
+# 只剩当前文件夹的名字
 MODULE := $(notdir $(MODULE))
 DIR_OUTPUT := $(addprefix $(DIR_BUILD)/, $(MODULE))
 
