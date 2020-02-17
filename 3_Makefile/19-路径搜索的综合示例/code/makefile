@@ -10,6 +10,7 @@ TYPE_SRC := .c
 TYPE_OBJ := .o
 
 CC := gcc
+# 链接时所需要的链接选项, 比如 -pthread
 LFLAGS :=
 CFLAGS := -I $(DIR_INC)
 ifeq ($(DEBUG),true)
