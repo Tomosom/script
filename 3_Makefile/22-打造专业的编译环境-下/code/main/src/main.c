@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "define.h"
-
+#include "common.h"
 int main()
 {
     printf("Version: %s\n", VERSION);
