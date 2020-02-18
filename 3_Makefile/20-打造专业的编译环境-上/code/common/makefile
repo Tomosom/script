@@ -1,8 +1,10 @@
 
 .PHONY : all
 
-DIR_BUILD := /home/delphi/make/build
-DIR_COMMON_INC := /home/delphi/make/common/inc
+#DIR_BUILD := /home/delphi/make/build
+#DIR_COMMON_INC := /home/delphi/make/common/inc
+DIR_BUILD := ../build
+DIR_COMMON_INC := ../common/inc
 
 DIR_SRC := src
 DIR_INC := inc
@@ -16,6 +18,7 @@ AR := ar
 ARFLAGS := crs
 
 CC := gcc
+# 两个地方去找头文件
 CFLAGS := -I$(DIR_INC) -I$(DIR_COMMON_INC)
 
 ifeq ($(DEBUG),true)
@@ -26,7 +29,11 @@ endif
 MODULE := $(realpath .)
 # 只剩当前文件夹的名字
 MODULE := $(notdir $(MODULE))
+
 DIR_OUTPUT := $(addprefix $(DIR_BUILD)/, $(MODULE))
+
+all1 :
+	@echo $(DIR_OUTPUT)
 
 OUTPUT := $(MODULE).a
 OUTPUT := $(addprefix $(DIR_BUILD)/, $(OUTPUT))
