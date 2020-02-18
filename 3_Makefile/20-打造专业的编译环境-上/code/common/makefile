@@ -48,19 +48,25 @@ vpath %$(TYPE_INC) $(DIR_INC)
 vpath %$(TYPE_INC) $(DIR_COMMON_INC)
 vpath %$(TYPE_SRC) $(DIR_SRC)
 
+# 默认的第一个规则在这个include文件里边
 -include $(DEPS)
+
+.PHONY: all clean
 
 all : $(OUTPUT)
 	@echo "Success! Target ==> $(OUTPUT)"
 	
 $(OUTPUT) : $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
-	
+
+# 模式规则
 $(DIR_OUTPUT)/%$(TYPE_OBJ) : %$(TYPE_SRC)
 	$(CC) $(CFLAGS) -o $@ -c $(filter %$(TYPE_SRC), $^)
-	
-	
+
 $(DIR_OUTPUT)/%$(TYPE_DEP) : %$(TYPE_SRC)
 	@echo "Creating $@ ..."
 	@set -e; \
 	$(CC) $(CFLAGS) -MM -E $(filter %$(TYPE_SRC), $^) | sed 's,\(.*\)\.o[ :]*,$(DIR_OUTPUT)/\1$(TYPE_OBJ) $@ : ,g' > $@
+    
+clean :
+	$(RM) $(DIR_OUTPUT)/*$(TYPE_OBJ) $(DIR_OUTPUT)/*$(TYPE_DEP) $(OUTPUT)
