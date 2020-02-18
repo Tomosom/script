@@ -32,15 +32,15 @@ MODULE := $(notdir $(MODULE))
 
 DIR_OUTPUT := $(addprefix $(DIR_BUILD)/, $(MODULE))
 
-all1 :
-	@echo $(DIR_OUTPUT)
-
 OUTPUT := $(MODULE).a
 OUTPUT := $(addprefix $(DIR_BUILD)/, $(OUTPUT))
 
+# src/*.c
 SRCS := $(wildcard $(DIR_SRC)/*$(TYPE_SRC))
+# ../build/$(MODULE)/*.o
 OBJS := $(SRCS:$(TYPE_SRC)=$(TYPE_OBJ))
 OBJS := $(patsubst $(DIR_SRC)/%, $(DIR_OUTPUT)/%, $(OBJS))
+# ../build/$(MODULE)/*.dep
 DEPS := $(SRCS:$(TYPE_SRC)=$(TYPE_DEP))
 DEPS := $(patsubst $(DIR_SRC)/%, $(DIR_OUTPUT)/%, $(DEPS))
 
