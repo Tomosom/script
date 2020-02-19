@@ -31,7 +31,8 @@ compile : $(DIR_BUILD) $(DIR_BUILD_SUB)
 		cd $$dir && $(MAKE) all DEBUG:=$(DEBUG) && cd .. ; \
 	done
 	@echo "Compile Success!"
-	
+
+# -Xlinker自动确定依赖关系
 link $(APP) : $(MODULE_LIB)
 	@echo "Begin to link ..."
 	$(CC) -o $(APP) -Xlinker "-(" $^ -Xlinker "-)" $(LFLAGS)
