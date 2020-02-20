@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "define.h"
+#include "common.h"
 #include "slib.h"
 #include "dlib.h"
 
