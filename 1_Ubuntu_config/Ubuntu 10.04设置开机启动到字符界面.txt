@@ -1,0 +1,19 @@
+机器：Ubuntu 10.04.3 32位
+
+步骤：
+
+1. #vim /etc/default/grub
+
+2. 将 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+
+改为：
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash text"
+
+3. #sudo update-grub
+
+结束，重启，成功。
+
+备注：
+
+据说Ubuntu 10.04以上的版本，更改方法与此不同，因为没有使用过相关版本，不作说明。
