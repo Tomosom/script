@@ -1,0 +1,20 @@
+http://blog.sina.com.cn/s/blog_4a0824490102y8m6.html
+
+编写Shell脚本的过程中，经常会和文件名和文件路径打交道。如果用户输入了一个文件的全名（可能包含绝对路径和文件后缀），如何得到文件的路径名，文件名，文件后缀这些信息呢。Shell脚本拥有强大的字符串处理能力，如果把文件名当做字符串，我们不难使用cut或sed这样的工具得到我们想要的结果。
+$fullfile=/the/path/foo.txt
+$fullname=$(basename $fullfile)
+$dir=$(dirname $fullfile)
+$filename=$(echo $fullname | cut -d . -f1)
+$extension=$(echo $fullname | cut -d . -f2)
+$ echo $dir , $fullname , $filename , $extension
+/the/path , foo.txt , foo , txt
+
+这里使用basename命令可以直接得到包含后缀的文件名，而dirname命令可以得到路径名，然后就能简单的用cut截取文件名和后缀名。
+
+
+光用语言把这两个正则表达式描述出来脑细胞也要死不少。有没有像上面cut版本一样简单容易理解的方法呢？由于.分隔符的个数不确定，正常使用cut来分割最后一个.字符是不太可能的。但是我们可使用 rev 命令将字符串反转一下，区分后缀和文件名的.字符位置就确定了。截取了想要的部分之后，再次反转就得到了我们想要的内容。
+$ fullname=mylib.1.0.1a.zip
+$ filename=$(rev <<< $fullname | cut -d . -f2- | rev)
+$ extension=$(rev <<< $fullname | cut -d . -f1 | rev)
+$ echo $filename, $extension
+mylib.1.0.1a, zip
